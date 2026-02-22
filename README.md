@@ -28,4 +28,4 @@ Este repositório contém minhas anotações, resumos e exercícios das discipli
 ## Contato
 
 - Raissa Mineiro
-- GitHub: [seu-usuario](https://github.com/seu-usuario)
+- GitHub: [seu-usuario](https://github.com/raissalim)
