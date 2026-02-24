@@ -1,0 +1,102 @@
+CREATE DATABASE bdbiblioteca;
+
+USE bdbiblioteca;
+
+CREATE TABLE tbLivro(
+idLivro INT PRIMARY KEY AUTO_INCREMENT,
+tituloLivro VARCHAR (60),
+autorLivro VARCHAR (50) DEFAULT 'Sem autor',
+anoPublicação DATE
+);
+
+INSERT INTO tbLivro (tituloLivro, autorLivro, `anoPublicação`)
+VALUES
+ ('Dom Casmurro', 'Machado de Assis', '1899-01-01');
+
+
+INSERT INTO tbLivro (tituloLivro, `anoPublicação`)
+VALUES ('O Pequeno Príncipe', '1943-04-06');
+
+SELECT*FROM tbLivro;
+
+UPDATE tbLivro  
+SET autorLIvro= 'Raissa'
+WHERE idLivro=1;
+
+SELECT CONCAT (tituloLIvro), '-', (autorLivro)  AS titulo_autor
+FROM tbLivro 
+WHERE idLivro=1;
+
+DELETE from tbLivro 
+WHERE autorLivro= 'Raissa';
+
+DESC tbLivro;
+
+ALTER TABLE tbLivro ADD editoraLIvro VARCHAR (50);
+
+SELECT * from tbLivro  
+WHERE autorLivro like '%a%';
+
+ALTER TABLE tbLivro
+Drop column editoraLivro;
+
+
+
+CREATE TABLE tbUsuario(
+idUsuario INT PRIMARY KEY AUTO_INCREMENT,
+nomeUsuario VARCHAR (60) NOT NULL,
+tipoUsuario VARCHAR (3)
+
+);
+
+INSERT INTO tbUsuario (nomeUsuario, tipoUsuario)
+VALUES
+('Raissa' ),
+('Carlos');
+
+
+ALTER TABLE tbUsuario
+ADD CONSTRAINT chk_tipoUsuario
+CHECK (tipoUsuario IN ('Docente','Discente',visitante));
+
+UPDATE tbUsuario
+SET tipoUsuario ='Docente'
+WHERE idUsuario= 1;
+
+
+SELECT * from tbUsuario  
+WHERE nomeUsuario like '%m';
+
+
+ALTER TABLE tbUsuario ADD telefoneUsuario VARCHAR (20);
+
+ALTER TABLE tbUsuario Modify nomeUsuario VARCHAR (70);
+
+SELECT nomeUsuario AS nome_completo
+FROM tbUsuario;
+
+
+
+SELECT CONCAT(tituloLivro, ' - ', autorLivro) AS detalhes
+FROM tbLivro;
+
+SELECT 
+    tituloLivro,
+    anoPublicacao,
+    CASE
+        WHEN anoPublicacao < 2000 THEN 'Antigo'
+        ELSE 'Moderno'
+    END AS classificacao
+FROM tbLivro;
+
+SELECT *
+FROM tbLivro
+ORDER BY tituloLivro DESC;
+
+SELECT *
+FROM tbUsuario
+WHERE tipo <> 'docente';
+
+TRUNCATE TABLE tbLivro;
+
+DROP DATABASE bdbiblioteca; 
