@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de PI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+            <center>
+
+            <span class="roxo">
+                Calculadora do retorno do insvestimento  (ROI)<br> <br>
+                <span class="italico">(Apis mellifera)</span> 
+                em caixas modelo Langstroth
+            </span><br><br>          
+            <label for="num1">Digite número de colmeias</label><br> 
+             <input type="text" id="num1" ><br><br>
+            <label for="num2">Digite valor da colmeia</label><br>
+            <input type="text" id="num2" ><br><br>
+            <label for="Perda">Digite a % da perda</label><br>
+            <input type="text" id="Perda" ><br><br>
+            
+            <p id="Perdaa"></p><br>
+            <p id="Ganho"></p><br>
+
+            
+            <button type="button"  id= "btnCalcular" onclick="calculadoranul()">Calcule seu ROI</button>
+            </center>
+            <br><br>
+
+        <script>
+
+            // fazendo as operações da calculadora 
+            function calculadoranul(){
+                let numeroColmeias=Number(num1.value);
+                let valorColmeia=Number(num2.value);
+                let porcentagemPerda=Number(Perda.value)/ 100;
+                let semApis=(numeroColmeias*porcentagemPerda)*valorColmeia;
+
+                let novaPerda =semApis*0.4;
+                let economia= semApis-novaPerda;
+              
+               
+            Perdaa.innerHTML =
+            "<span class='vermelho'>Sua perda sem Apis: R$ " + semApis.toFixed(2) + "</span>";
+            
+
+            
+            Ganho.innerHTML =
+            "<span class='verde'>Sua economiacom a  aliança Apis R$ " + economia.toFixed(2) + "</span>";
+            
+            }
+
+        </script>
+    </body>
+</html>
