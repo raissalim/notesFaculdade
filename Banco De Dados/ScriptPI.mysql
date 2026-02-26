@@ -1,0 +1,85 @@
+	CREATE DATABASE bdNullpoint;
+
+	USE bdNullpoint;
+
+	CREATE TABLE tbApicultor(
+	idApicultor INT PRIMARY KEY AUTO_INCREMENT,
+	nomeApicultor VARCHAR (50),
+	datanasc DATE,
+	cpfApicultor VARCHAR (10) UNIQUE
+	);
+
+	CREATE TABLE tbEndereco(
+	idEndereco INT PRIMARY KEY AUTO_INCREMENT,
+	logradouroEndereco VARCHAR (100),
+	numeroEndereco VARCHAR (20),
+	cidadeEndereco VARCHAR (40),
+	ufEndereco VARCHAR (20),
+	paisEndereco VARCHAR (50)
+	);
+
+	CREATE TABLE tbServico(
+	idServico iNT PRIMARY KEY AUTO_INCREMENT,
+	nomeServico VARCHAR (50)
+	);
+
+	CREATE TABLE tbTelefone(
+	idTelefone  iNT PRIMARY KEY AUTO_INCREMENT,
+	numeroTelefone VARCHAR (30)
+	);
+
+	CREATE TABLE tbEmail(
+	idEmail iNT PRIMARY KEY AUTO_INCREMENT,
+	numeroEmail VARCHAR (30)
+	);
+
+	CREATE TABLE tbPedido(
+	idPedido iNT PRIMARY KEY AUTO_INCREMENT,
+	nomePedido VARCHAR (50),
+    fkCliente INT,
+    FOREIGN KEY (fkCliente) REFERENCES tbCliente(idCliente)
+	);
+
+    CREATE TABLE tbInstalacao(
+    idInstalacao iNT PRIMARY KEY AUTO_INCREMENT,
+    dataInstalacao DATE,
+    descInstalacao VARCHAR (50)
+);
+   CREATE TABLE tbColmeias(
+   idColmeia  iNT PRIMARY KEY AUTO_INCREMENT,
+   identificacaoColmeia VARCHAR (40),
+   fkApiario INT,
+   FOREIGN KEY (fkApiario) REFERENCES tbApiario(idApiario)
+);
+  CREATE TABLE tbSensor(
+  idSensor iNT PRIMARY KEY AUTO_INCREMENT,
+  tipoSensor VARCHAR (40),
+  fkColmeia INT,
+  FOREIGN KEY (fkColmeia) REFERENCES tbColmeia(idColmeia)
+);
+
+	CREATE TABLE tbLeitura(
+	idLeitura INT PRIMARY KEY AUTO_INCREMENT,
+	valorLeitura FLOAT,
+	dataHora DATETIME,
+	fkSensor INT,
+	FOREIGN KEY (fkSensor) REFERENCES tbSensor(idSensor)
+	);
+	CREATE TABLE tbAlerta(
+	idAlerta INT PRIMARY KEY AUTO_INCREMENT,
+	descricaoAlerta VARCHAR(100),
+	dataHora DATETIME,
+	fkColmeia INT,
+	FOREIGN KEY (fkColmeia) REFERENCES tbColmeia(idColmeia)
+	);
+    
+    CREATE TABLE tbManutencao(
+	idManutencao INT PRIMARY KEY AUTO_INCREMENT,
+	descricaoManutencao VARCHAR(100),
+	dataManutencao DATE,
+	fkColmeia INT,
+	FOREIGN KEY (fkColmeia) REFERENCES tbColmeia(idColmeia)
+	);
+
+
+
