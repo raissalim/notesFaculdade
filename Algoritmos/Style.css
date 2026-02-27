@@ -1,0 +1,70 @@
+.vermelho{
+    color:red;
+
+}
+
+.roxo{
+    color:#953dae;
+    font-weight: bold;
+}
+.verde{
+    color:green;
+    font-weight: bold;
+}
+.orange{
+    color:orangered;
+}
+body{
+        background-color:#F2F9E5;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size:20px;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        height:100vh;
+}
+#num1,#num2{
+        width: 90%;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        border: 2px solid #6D1585;
+        font-size: 16px;
+
+}
+
+#containerApiario{
+        width: 350px;
+ 
+        text-align:center;
+        background-color:white;
+        margin:auto;
+        padding:25px;
+        border-radius:12px;
+        box-shadow:0px 0px 15px rgba(0,0,0,0.2);
+        }
+
+
+#Perda{
+    border-radius: 10px;
+    width:100px;
+    border-color:#6D1585;
+     font-size: 20px;
+}
+#btnCalcular{
+    border-radius: 12px;
+    background-color: #792590;
+    color: black;
+    width:150px;
+    gap:10px;
+    padding: 10px 10px;
+    font-size: 10px;
+    font-weight: bold;
+    margin-top: 0px; 
+    cursor: pointer;
+}
+#italico{
+    font-style: italic;
+}
