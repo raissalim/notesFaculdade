@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de PI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+          
+        <div id="containerApiario">
+            Calculadora monitoramento de abelhas<br> <br>
+            <span class="italico">(Apis mellifera)</span> 
+            em caixas modelo Langstroth
+            </span><br><br>          
+
+            <h2>Informe a quantidade de caixa(s) de abelha(s) 🐝📦🍯</h2>
+             <input type="text" id="num1" ><br><br>
+
+            <label for="num2">Digite quantidade quadros</label><br>
+            <input type="text" id="num2" ><br><br>
+
+             <button type="button"  id= "btnCalcular" onclick="calcularApiario()">Calcule</button>
+           
+            <br><br>
+         </div>
+            
+                <div id="resultadoPopulacao"></div>
+                <div id="resultadoPerdas"></div>
+                <div id="resultadoPrejuizo"></div>
+                <div id="resultadoMensal"></div>
+                <div id="resultadoAno"></div>
+
+            
+           
+                <script>
+                function calcularApiario(){
+                 
+
+                //usuario informa
+                let quantidadeCaixas = Number(document.getElementById("num1").value);
+                let quantidadeQuadros = Number(document.getElementById("num2").value);
+
+                let abelhasPorQuadroMinimo = 7000;
+                let abelhasPorQuadroMaximo = 9000;
+                let mortesDiariasPorCaixa = 30000;
+                let lucroPorAbelha = 0.015;
+
+                
+                let populacaoMaxima =
+                quantidadeQuadros * abelhasPorQuadroMaximo * quantidadeCaixas;
+
+                let populacaoMinima =
+                quantidadeQuadros * abelhasPorQuadroMinimo * quantidadeCaixas;
+
+                let populacaoMedia =
+                (populacaoMaxima + populacaoMinima) / 2;
+
+                //  Perdas 
+                let totalMortesDiarias =
+                mortesDiariasPorCaixa * quantidadeCaixas;
+
+                let prejuizoDiario =
+                totalMortesDiarias * lucroPorAbelha;
+
+              
+                let prejuizoMensal = prejuizoDiario * 30;
+                let prejuizoAnual = prejuizoDiario * 365;
+
+               
+                // Exibir mensagens
+                document.getElementById("resultadoPopulacao").innerHTML =
+                `<h3>População aproximada: ${populacaoMedia.toLocaleString()} abelhas</h3>`;
+
+                document.getElementById("resultadoPerdas").innerHTML =
+                `<h3>Perda diária: ${totalMortesDiarias.toLocaleString()} abelhas</h3>`;
+
+                document.getElementById("resultadoMensal").innerHTML =
+                `<h3>Prejuízo mensal: R$ ${prejuizoMensal.toFixed(2)}</h3>`;
+
+                document.getElementById("resultadoAno").innerHTML =
+                `<h3>Prejuízo anual: R$ ${prejuizoAnual.toFixed(2)}</h3>`;
+                }
+                </script>
+    </body>
+</html>
