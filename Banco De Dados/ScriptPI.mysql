@@ -81,5 +81,61 @@
 	FOREIGN KEY (fkColmeia) REFERENCES tbColmeia(idColmeia)
 	);
 
+ 
+INSERT INTO tbApicultor (nomeApicultor, datanasc, cpfApicultor) VALUES
+('João Abelha', '1985-05-20', '1234567890'),
+('Maria Mel', '1992-08-12', '2345678901'),
+('Carlos Zangão', '1978-11-30', '3456789012'),
+('Ana Pólen', '1995-02-15', '4567890123'),
+('Pedro Colmeia', '1989-07-10', '5678901234');
+
+INSERT INTO tbEndereco (logradouroEndereco, numeroEndereco, cidadeEndereco, ufEndereco, paisEndereco) VALUES
+('Rua das Flores', '123', 'Holambra', 'SP', 'Brasil'),
+('Estrada do Mel', 'S/N', 'Cunha', 'SP', 'Brasil'),
+('Av. das Abelhas', '500', 'Belo Horizonte', 'MG', 'Brasil'),
+('Sítio Recanto', 'KM 12', 'Gramado', 'RS', 'Brasil'),
+('Fazenda Central', '10', 'Goiânia', 'GO', 'Brasil');
+
+
+INSERT INTO tbServico (nomeServico) VALUES
+('Monitoramento IoT'),
+('Consultoria Genética'),
+('Extração de Mel'),
+('Manutenção de Colmeias'),
+('Tratamento Sanitário');
+
+
+INSERT INTO tbTelefone (numeroTelefone) VALUES
+('(11) 98888-7777'),
+('(21) 97777-6666'),
+('(31) 96666-5555'),
+('(41) 95555-4444'),
+('(51) 94444-3333');
+
+
+INSERT INTO tbEmail (numeroEmail) VALUES
+('contato@mel.com'),
+('suporte@apiario.com.br'),
+('vendas@polen.com'),
+('bio@abelhas.org'),
+('info@nullpoint.com');
+
+
+INSERT INTO tbInstalacao (dataInstalacao, descInstalacao) VALUES
+('2023-10-01', 'Instalação Kit Básico'),
+('2023-11-15', 'Upgrade Sensores Pro'),
+('2024-01-20', 'Manutenção Preventiva'),
+('2024-02-10', 'Configuração de Gateway'),
+('2024-03-02', 'Substituição de Bateria');
+
+
+
+
+SELECT * FROM tbApicultor;
+SELECT * FROM tbEndereco;
+SELECT * FROM tbServico;
+SELECT * FROM tbTelefone;
+SELECT * FROM tbEmail;
+SELECT * FROM tbInstalacao;
 
 
