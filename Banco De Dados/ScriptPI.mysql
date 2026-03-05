@@ -25,19 +25,17 @@
 
 	CREATE TABLE tbTelefone(
 	idTelefone  iNT PRIMARY KEY AUTO_INCREMENT,
-	numeroTelefone VARCHAR (30)
+	numeroTelefone VARCHAR (30) UNIQUE
 	);
 
 	CREATE TABLE tbEmail(
 	idEmail iNT PRIMARY KEY AUTO_INCREMENT,
-	numeroEmail VARCHAR (30)
+	numeroEmail VARCHAR (30) UNIQUE
 	);
 
 	CREATE TABLE tbPedido(
 	idPedido iNT PRIMARY KEY AUTO_INCREMENT,
-	nomePedido VARCHAR (50),
-    fkCliente INT,
-    FOREIGN KEY (fkCliente) REFERENCES tbCliente(idCliente)
+	nomePedido VARCHAR (50)
 	);
 
     CREATE TABLE tbInstalacao(
@@ -47,39 +45,27 @@
 );
    CREATE TABLE tbColmeias(
    idColmeia  iNT PRIMARY KEY AUTO_INCREMENT,
-   identificacaoColmeia VARCHAR (40),
-   fkApiario INT,
-   FOREIGN KEY (fkApiario) REFERENCES tbApiario(idApiario)
+   identificacaoColmeia VARCHAR (40)
+ 
 );
   CREATE TABLE tbSensor(
   idSensor iNT PRIMARY KEY AUTO_INCREMENT,
-  tipoSensor VARCHAR (40),
-  fkColmeia INT,
-  FOREIGN KEY (fkColmeia) REFERENCES tbColmeia(idColmeia)
+  tipoSensor VARCHAR (40)
+
 );
 
 	CREATE TABLE tbLeitura(
 	idLeitura INT PRIMARY KEY AUTO_INCREMENT,
 	valorLeitura FLOAT,
-	dataHora DATETIME,
-	fkSensor INT,
-	FOREIGN KEY (fkSensor) REFERENCES tbSensor(idSensor)
+	dataHora DATETIME
 	);
 	CREATE TABLE tbAlerta(
 	idAlerta INT PRIMARY KEY AUTO_INCREMENT,
 	descricaoAlerta VARCHAR(100),
-	dataHora DATETIME,
-	fkColmeia INT,
-	FOREIGN KEY (fkColmeia) REFERENCES tbColmeia(idColmeia)
+	dataHora DATETIME
 	);
     
-    CREATE TABLE tbManutencao(
-	idManutencao INT PRIMARY KEY AUTO_INCREMENT,
-	descricaoManutencao VARCHAR(100),
-	dataManutencao DATE,
-	fkColmeia INT,
-	FOREIGN KEY (fkColmeia) REFERENCES tbColmeia(idColmeia)
-	);
+   
 
  
 INSERT INTO tbApicultor (nomeApicultor, datanasc, cpfApicultor) VALUES
