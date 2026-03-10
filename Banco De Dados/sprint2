@@ -1,0 +1,92 @@
+CREATE DATABASE sprint2;
+USE  sprint2;
+
+CREATE TABLE pessoa(
+idPessoa int primary key,
+nome VARCHAR (45),
+cpf CHAR (11)
+);
+
+CREATE TABLE reserva(
+idReserva INT PRIMARY KEY,
+dtReserva DATETIME,
+dtRetirada DATETIME,
+dtDevolucao DATETIME,
+fkpessoa INT
+);
+
+INSERT INTO  pessoa (idPessoa,nome,cpf)
+VALUES
+
+(1,'Luis','44900733806'),
+(2,'Marcos','44900733805'),
+(3,'Carlos','44900733804'),
+(4,'Maria','44900733002'),
+(5,'Luis','44900733786');
+
+INSERT INTO reserva (idReserva, dtReserva, dtRetirada, dtDevolucao, fkPessoa)
+VALUES
+(1,'2026-03-10 10:00:00','2026-03-11 08:00:00','2026-03-15 18:00:00',1),
+(2,'2026-03-11 09:30:00','2026-03-12 10:00:00','2026-03-16 17:00:00',2),
+(3,'2026-03-12 14:00:00','2026-03-13 09:00:00','2026-03-17 16:00:00',3),
+(4,'2026-03-13 11:15:00','2026-03-14 08:30:00','2026-03-18 19:00:00',4),
+(5,'2026-03-14 15:45:00','2026-03-15 10:00:00','2026-03-19 18:30:00',5);
+
+ALTER TABLE reserva ADD CONSTRAINT fkPessoaReserva
+foreign key(fkPessoa)
+REFERENCES pessoa (idPessoa);
+
+SELECT *FROM pessoa;
+SELECT *FROM reserva;
+
+SELECT nome AS 'nome:' 
+FROM pessoa AS da_pessoa;
+
+
+SELECT dtReserva AS 'data da reserva:' 
+FROM reserva AS da_reserva;
+
+SELECT 
+dtReserva,
+  CASE 
+  WHEN  dtReserva between '2026-03-10 10:00:00' AND '2026-03-11 09:30:00' then 'Você está adiantado'
+   else 'Por pouco não conseguiu'
+   END AS categoria_reserva
+    from reserva;
+    
+
+SELECT idReserva,
+IFNULL(dtDevolucao,'Ainda não foi devolvido') AS devolução
+FROM reserva;
+
+CREATE TABLE pessoa1(
+idPessoa1 int primary key,
+nome varchar (100),
+dtNascimento DATETIME
+);
+
+CREATE TABLE pessoa2(
+idPessoa2 int primary key,
+nomePessoa2 varchar (100),
+dtNascimento DATETIME,
+fkPessoa1 int
+);
+
+INSERT INTO pessoa1 (idPessoa1, nome, dtNascimento)
+VALUES
+(1,'Valeria','1990-05-10'),
+(2,'Carlos','1988-11-22'),
+(3,'Marina','1995-03-15'),
+(4,'João','2000-07-08'),
+(5,'Fernanda','1992-12-01');
+
+INSERT INTO pessoa2 (idPessoa2, nomePessoa2, dtNascimento, fkPessoa1)
+VALUES
+(1,'Lucas','2001-04-10',1),
+(2,'Amanda','1999-09-21',2),
+(3,'Ricardo','2003-01-15',3),
+(4,'Juliana','2000-06-30',4),
+(5,'Thiago','1998-12-05',5);
+
+SELECT *FROM pessoa1;
+SELECT *FROM pessoa2;
